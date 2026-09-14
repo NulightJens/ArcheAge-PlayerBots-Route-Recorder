@@ -59,7 +59,7 @@ The mod does not read any of the files above. It loads road files from its own `
 
 Rules the mod enforces when loading: `schema_version` must match exactly; every road needs `worldId`, a `pathName`, at least two points and a `direction` of `ForwardOnly`, `BackwardOnly` or `Both`; every coordinate must be a finite number. A bad file stops the load with the file name in the error.
 
-Converting a reviewed graph (step 3) into this file (step 4) is done by a maintainer. There is no script for it in this repository yet; the two road files shipped with the mod were prepared by hand. That script is the obvious next tool to add here.
+Converting a reviewed graph (step 3) into this file (step 4) is done by a maintainer. Automatic conversion from the merged graph to the PlayerBots road format is not available yet.
 
 ## 1.6.0 additive exports
 

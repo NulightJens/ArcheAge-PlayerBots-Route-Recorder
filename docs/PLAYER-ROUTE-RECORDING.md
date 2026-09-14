@@ -56,6 +56,8 @@ The merge is deterministic for the same sorted recording set. Nearby observation
 
 The versioned schemas live under `scripts/route-recorder/schemas`. Runtime bot logic does not record, simplify, or merge anything. A reviewed graph can later be compiled into a lightweight navigation input without moving crowdsourcing work into bot ticks.
 
-## Future uploader boundary
+## Sharing
 
-The first version intentionally has no hosted database or account system. A future uploader, if community volume warrants it, should accept the exact signed/checksummed bundle format, require explicit authentication and consent, minimize contributor identity, rate-limit and deduplicate submissions, scan notes, support moderation and withdrawal requests, and keep raw working recordings client-side. That service is a separate security and privacy project, not part of this recorder.
+The recorder saves exports locally. Review the route name and notes, then share
+the ZIP and its checksum with the person collecting routes. Nothing uploads
+automatically.

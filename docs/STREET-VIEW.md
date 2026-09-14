@@ -38,7 +38,7 @@ counts photos within two meters so you can compare nearby views.
 
 These are separate perspective photographs. The server reports **player heading**,
 which can differ from camera heading; camera orientation is recorded as unknown.
-We do not label these images a verified 360 panorama or stitch unseen content.
+The viewer shows individual photos rather than a stitched panorama.
 Do not walk while attempting a stationary camera sweep. An orbiting third-person
 camera changes viewpoint and can introduce parallax, so a seamless panorama would
 need a tested fixed camera position, controlled overlap, orientation and stitching.
@@ -74,8 +74,8 @@ There is no catch-up burst or image upscaling.
 windowed/borderless mode with the whole game on one monitor. It copies the visible
 client area and skips focus loss, minimization, detected covering windows,
 near-black images, stale positions and low space. Small/transient overlays may
-still appear. Native F9 behavior, exclusive fullscreen and the actual ArcheAge
-client remain physical compatibility checks: inspect a two-minute export first.
+still appear. Screenshot keys and fullscreen capture vary by client; inspect
+a two-minute export before starting a long recording.
 The tool does not inject into the game, rotate the camera, hide the HUD or use a
 whole-desktop capture fallback. Only the screenshot key is sent in native mode.
 

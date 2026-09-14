@@ -50,9 +50,6 @@ new topology or enforce their direction. It checks world IDs, not instance IDs;
 the maintainer must choose a matching instance/context. Do not install these
 files directly into the bot runtime or treat them as an extracted navmesh.
 
-The WoW Playerbots research supports using a travel graph above local navigation.
-The ArcheAge extractor already reads native BAI nodes and links; contributors do
-not need to reproduce all of those by hand. Human surveys add observed access,
-junction identity, meaningful destinations, failures, floors, directions and
-walked alternatives. Game data extraction and live traversal remain different
-forms of evidence. No WoW coordinates, mmap files or game rules are imported.
+The extractor reads navigation connections from game data. Your recordings add
+local details: entrances, junctions, useful destinations, blocked passages, floors
+and alternative routes. Walk both directions and mark those details as you go.

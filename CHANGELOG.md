@@ -8,12 +8,11 @@
 - Add City / area network mode with explicit named junctions and observed directed branches.
 - Preserve closed loops and separate recording gaps.
 - Include versioned network data and extractor-compatible, context-separated navigation-prior files alongside route.json.
-- Preserve existing ZIPs and saved quick marks. Live r208088 validation remains pending.
+- Keep existing ZIPs and saved quick marks when upgrading.
 - Write portable ZIP entry names when building with Windows PowerShell 5.1.
 
 ## 1.5.2 — Unreleased
 
-- Bring the independent recorder up to the retained 1.5.1 feature set.
 - Include optional photos, saved photo settings, quick marks and route/photo exports.
-- Adapt source and binary packaging to the independent repository layout.
+- Standalone Windows download with a launcher and setup guide.
 - Preserve existing recordings, screenshots and saved preferences during upgrades.

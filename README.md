@@ -2,7 +2,7 @@
 
 [Download this preview](https://github.com/NulightJens/ArcheAge-PlayerBots-Route-Recorder/releases/tag/v1.6.0) · [Tool family](FAMILY.md)
 
-Record the streets you walk and mark useful places. **1.6.0 candidate · Windows**
+Record the streets you walk and mark useful places. **1.6.0 preview · Windows**
 
 Extract the complete ZIP and open **PlayerRouteRecorder.exe**. Follow
 [START-HERE.html](START-HERE.html) for one-time setup. You need a working local
@@ -17,9 +17,9 @@ AAEmu Game server and an online GM character; the PlayerBots mod is not required
 3. If connection fails, follow the specific message beside the character field.
    The local API address can be changed in Server setup. Keep it on loopback.
 
-AAEmu 1.2 r208022 is the tested baseline. Other revisions are experimental and
-may be used when the position command works. A successful check proves a valid
-position sample, not full client/server compatibility. Your build label is saved
+Use AAEmu 1.2 r208022. Other revisions are experimental;
+Check connection must return a valid position before you record. A successful
+connection alone does not guarantee compatibility with every feature. Your build label is saved
 as declared; the tool does not guess it. If problems persist, use a matching
 r208022 server/client setup. Do not rebuild your installation solely because the
 old recorder showed a generic connection error.
@@ -55,7 +55,8 @@ survey; combining independent surveys requires review.
 Send the exported ZIP and `.sha256` file. It contains the existing `route.json`,
 checksummed navigation-prior files, and `network.json` for city surveys. Read
 [the network guide](docs/CITY-NETWORKS.md) for examples and extractor usage.
-These are collection evidence, not a ready-to-install bot navigation database.
+Use these recordings with Navigation Extractor; they cannot be loaded directly
+into PlayerBots as navigation maps.
 Review notes before sharing; nothing uploads automatically.
 
 Optional photo controls remain documented in [the photo guide](docs/STREET-VIEW.md).
