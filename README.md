@@ -1,4 +1,9 @@
-# ArcheAge Route Recorder
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/title-dark.svg" />
+    <img src="assets/title-light.svg" alt="ArcheAge PlayerBots — Route Recorder" width="100%" />
+  </picture>
+</p>
 
 [Download this preview](https://github.com/NulightJens/ArcheAge-PlayerBots-Route-Recorder/releases/tag/v1.6.0) · [Tool family](FAMILY.md)
 

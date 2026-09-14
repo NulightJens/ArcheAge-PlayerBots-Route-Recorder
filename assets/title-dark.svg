@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-labelledby="title">
+  <title id="title">ArcheAge PlayerBots — Route Recorder</title>
+  <g transform="translate(70 63)" fill="none" stroke="#c5a674" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 66h27c14 0 14-22 0-22H32c-14 0-14-22 0-22h27"/>
+    <circle cx="11" cy="66" r="6"/>
+    <path d="M72 13a10 10 0 0 1 10 10c0 9-10 20-10 20S62 32 62 23a10 10 0 0 1 10-10Z"/>
+    <circle cx="72" cy="23" r="2.6"/>
+    <path d="M65 66h17" opacity="0.4"/>
+  </g>
+  <text x="196" y="83" fill="#c5a674" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="3.5">ARCHEAGE PLAYERBOTS</text>
+  <text x="192" y="150" fill="#e8e0d2" font-family="Georgia, Times New Roman, serif" font-size="66" font-weight="400" letter-spacing="-1">Route Recorder</text>
+</svg>
