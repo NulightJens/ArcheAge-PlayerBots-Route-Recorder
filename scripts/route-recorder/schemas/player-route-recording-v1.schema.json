@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nulightjens.github.io/ArcheAge-PlayerBots/schemas/player-route-recording-v1.schema.json",
+  "title": "PlayerBots route recording line v1",
+  "description": "Schema for each JSON Lines record in a private working recording.",
+  "oneOf": [
+    { "$ref": "#/$defs/header" },
+    { "$ref": "#/$defs/sample" },
+    { "$ref": "#/$defs/event" }
+  ],
+  "$defs": {
+    "header": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recordType", "schema", "schemaVersion", "recordingId", "createdUtc", "metadata", "capture"],
+      "properties": {
+        "recordType": { "const": "header" },
+        "schema": { "const": "playerbots-route-recording-v1" },
+        "schemaVersion": { "const": 1 },
+        "recordingId": { "type": "string", "format": "uuid" },
+        "createdUtc": { "type": "string", "format": "date-time" },
+        "metadata": { "$ref": "#/$defs/metadata" },
+        "capture": { "$ref": "#/$defs/capture" }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pathName", "from", "to", "pathType", "directionality", "notes", "gameVersion", "moduleVersion"],
+      "properties": {
+        "pathName": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "from": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "to": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "pathType": { "enum": ["main-road", "side-path", "shortcut", "cave", "dungeon", "water", "other"] },
+        "directionality": { "enum": ["bidirectional", "from-to", "to-from"] },
+        "notes": { "type": "string", "maxLength": 2000 },
+        "gameVersion": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "moduleVersion": { "type": "string", "minLength": 1, "maxLength": 80 }
+      }
+    },
+    "capture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tool", "toolVersion", "source", "sampleIntervalMs", "maximumDurationMinutes"],
+      "properties": {
+        "tool": { "const": "playerbots-windows-route-recorder" },
+        "toolVersion": { "type": "string", "minLength": 1 },
+        "source": { "const": "aaemu-loopback-command-v1" },
+        "sampleIntervalMs": { "type": "integer", "minimum": 250, "maximum": 60000 },
+        "maximumDurationMinutes": { "type": "integer", "minimum": 1, "maximum": 1440 }
+      }
+    },
+    "sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recordType", "sequence", "capturedUtc", "worldId", "instanceId", "zoneId", "x", "y", "z", "headingRadians", "quality", "source"],
+      "properties": {
+        "recordType": { "const": "sample" },
+        "sequence": { "type": "integer", "minimum": 1 },
+        "capturedUtc": { "type": "string", "format": "date-time" },
+        "worldId": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+        "instanceId": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+        "zoneId": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+        "x": { "type": "number", "minimum": -10000000, "maximum": 10000000 },
+        "y": { "type": "number", "minimum": -10000000, "maximum": 10000000 },
+        "z": { "type": "number", "minimum": -10000000, "maximum": 10000000 },
+        "headingRadians": { "type": ["number", "null"] },
+        "quality": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "source": { "type": "string", "minLength": 1, "maxLength": 120 }
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recordType", "capturedUtc", "eventType", "detail"],
+      "properties": {
+        "recordType": { "const": "event" },
+        "capturedUtc": { "type": "string", "format": "date-time" },
+        "eventType": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "detail": { "type": "string", "maxLength": 240 }
+      }
+    }
+  }
+}

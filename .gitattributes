@@ -1,0 +1,2 @@
+# Keep the extension checksum independent of Git/Windows checkout line endings.
+server/*.cs text eol=lf

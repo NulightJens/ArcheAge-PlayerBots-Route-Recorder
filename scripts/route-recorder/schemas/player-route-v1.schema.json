@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nulightjens.github.io/ArcheAge-PlayerBots/schemas/player-route-v1.schema.json",
+  "title": "Normalized PlayerBots route v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "schemaVersion", "recordingId", "metadata", "captureSummary", "normalization", "statistics", "segments", "events", "provenance"],
+  "properties": {
+    "schema": { "const": "playerbots-route-v1" },
+    "schemaVersion": { "const": 1 },
+    "recordingId": { "type": "string", "format": "uuid" },
+    "metadata": { "$ref": "player-route-recording-v1.schema.json#/$defs/metadata" },
+    "captureSummary": {
+      "type": "object",
+      "required": ["startedUtc", "endedUtc", "sampleIntervalMs", "source"],
+      "properties": {
+        "startedUtc": { "type": "string", "format": "date-time" },
+        "endedUtc": { "type": "string", "format": "date-time" },
+        "sampleIntervalMs": { "type": "integer", "minimum": 250 },
+        "source": { "type": "string" }
+      }
+    },
+    "normalization": { "type": "object" },
+    "statistics": { "type": "object" },
+    "segments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "worldId", "instanceId", "points"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^s[0-9]{4}$" },
+          "worldId": { "type": "integer", "minimum": 0 },
+          "instanceId": { "type": "integer", "minimum": 0 },
+          "points": {
+            "type": "array",
+            "minItems": 2,
+            "items": { "$ref": "#/$defs/point" }
+          }
+        }
+      }
+    },
+    "events": { "type": "array" },
+    "provenance": {
+      "type": "object",
+      "required": ["rawRecordingSha256", "recordingSchema", "recorderToolVersion"],
+      "properties": {
+        "rawRecordingSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "recordingSchema": { "const": "playerbots-route-recording-v1" },
+        "recorderToolVersion": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["offsetMs", "worldId", "instanceId", "zoneId", "x", "y", "z", "headingRadians", "quality", "sourceSequence"],
+      "properties": {
+        "offsetMs": { "type": "integer", "minimum": 0 },
+        "worldId": { "type": "integer", "minimum": 0 },
+        "instanceId": { "type": "integer", "minimum": 0 },
+        "zoneId": { "type": "integer", "minimum": 0 },
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": "number" },
+        "headingRadians": { "type": ["number", "null"] },
+        "quality": { "type": "string" },
+        "sourceSequence": { "type": ["integer", "null"] }
+      }
+    }
+  }
+}

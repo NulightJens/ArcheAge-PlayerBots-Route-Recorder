@@ -1,0 +1,11 @@
+Route notes
+
+Walk name:
+Start and destination:
+Travel mode:
+Useful marks:
+Blocked or difficult sections:
+Photo notes:
+
+CITY SURVEYS
+Record the client build, town, floor, named junctions, doors, stairs, ramps, ladders, one-way drops, blocked approaches and walked detours. Reuse a junction name only at the same spot. Keep separate worlds, instances and client builds separate. See docs/CITY-NETWORKS.md.
