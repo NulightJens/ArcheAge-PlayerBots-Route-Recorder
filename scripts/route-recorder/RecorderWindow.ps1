@@ -542,8 +542,7 @@ $script:browseButton.Add_Click({
     finally { $dialog.Dispose() }
 })
 $helpLink.Add_LinkClicked({
-    if ([IO.File]::Exists($humanGuidePath)) { Start-Process $humanGuidePath | Out-Null }
-    else { [Windows.Forms.MessageBox]::Show('START-HERE.html is missing. Extract the complete ZIP again.', 'Setup help') | Out-Null }
+    [Windows.Forms.MessageBox]::Show('Install the recorder bridge on your AAEmu server, then enter its address and your character name. Choose an output folder, name your walk, and press Record. Ctrl+Alt+R starts or stops recording; Ctrl+Alt+P captures a photo while recording. Stop saves the route and exports it to your chosen folder.', 'Route recorder help') | Out-Null
 })
 $script:hotKey = [PlayerBots.RouteRecorder.HotKeyWindow]::new()
 $registered = $script:hotKey.Register(4107, 0x0001 -bor 0x0002 -bor 0x4000, [uint32][Windows.Forms.Keys]::R)

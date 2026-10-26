@@ -27,6 +27,9 @@ if ([string]::IsNullOrWhiteSpace($compiler)) {
 }
 
 Add-Type -AssemblyName System.Drawing
+if (-not ('RouteRecorderBuild.NativeIcon' -as [type])) {
+    Add-Type 'namespace RouteRecorderBuild { public static class NativeIcon { [System.Runtime.InteropServices.DllImport("user32.dll")] public static extern bool DestroyIcon(System.IntPtr icon); } }'
+}
 $iconPath = [IO.Path]::ChangeExtension($absoluteOutput, '.ico')
 $bitmap = [Drawing.Bitmap]::new(64, 64)
 $graphics = [Drawing.Graphics]::FromImage($bitmap)
@@ -49,12 +52,13 @@ try {
         $routePen.Dispose()
         $background.Dispose()
     }
-    $icon = [Drawing.Icon]::FromHandle($bitmap.GetHicon())
+    $iconHandle = $bitmap.GetHicon()
+    $icon = [Drawing.Icon]::FromHandle($iconHandle)
     try {
         $stream = [IO.File]::Create($iconPath)
         try { $icon.Save($stream) } finally { $stream.Dispose() }
     }
-    finally { $icon.Dispose() }
+    finally { $icon.Dispose(); [RouteRecorderBuild.NativeIcon]::DestroyIcon($iconHandle) | Out-Null }
 }
 finally {
     $graphics.Dispose()

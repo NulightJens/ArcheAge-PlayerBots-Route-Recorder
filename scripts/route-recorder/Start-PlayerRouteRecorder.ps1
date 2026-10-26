@@ -28,7 +28,6 @@ Import-Module (Join-Path $PSScriptRoot 'QuickMarks.psm1') -Force
 $moduleRoot = Get-RecorderPackageRoot
 $recorderManifest = Get-Content -LiteralPath (Join-Path $moduleRoot 'recorder.json') -Raw | ConvertFrom-Json
 $moduleVersionDefault = 'recorder-only/' + [string]$recorderManifest.version
-$humanGuidePath = Join-Path $moduleRoot 'START-HERE.html'
 $identityPath = Join-Path $moduleRoot 'package-identity.json'
 if ([IO.File]::Exists($identityPath)) {
     $identity = Get-Content -LiteralPath $identityPath -Raw | ConvertFrom-Json
