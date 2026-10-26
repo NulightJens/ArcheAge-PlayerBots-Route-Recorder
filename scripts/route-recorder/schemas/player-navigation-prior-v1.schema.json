@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Recorded navigation centreline input v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "routeId",
+    "coordinateSystem",
+    "worldId",
+    "instanceId",
+    "gameVersion",
+    "source",
+    "usage",
+    "edges"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "playerbots-navigation-prior-v1"
+    },
+    "worldId": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "instanceId": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "coordinateSystem": {
+      "const": "aaemu-server-world-xyz-metres"
+    },
+    "edges": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "worldId",
+          "instanceId",
+          "direction",
+          "points"
+        ],
+        "properties": {
+          "worldId": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "instanceId": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "direction": {
+            "enum": [
+              "from-to",
+              "to-from",
+              "bidirectional"
+            ]
+          },
+          "points": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "required": [
+                "x",
+                "y",
+                "z"
+              ],
+              "properties": {
+                "x": {
+                  "type": "number"
+                },
+                "y": {
+                  "type": "number"
+                },
+                "z": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

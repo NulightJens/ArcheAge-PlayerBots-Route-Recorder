@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "ArcheAge Route Recorder",
+  "version": "1.6.0",
+  "requiresPlayerBots": false,
+  "host": {
+    "track": "AAEmu12",
+    "client": "ArcheAge 1.2 r208022",
+    "commit": "62e3eb1d87da01194802ac886cd500134facad28",
+    "policy": "baseline-tested-other-builds-capability-checked-experimental"
+  },
+  "bridge": {
+    "source": "server/PlayerRoutePositionCommand.cs",
+    "destination": "Scripts/Commands/PlayerRoutePositionCommand.cs",
+    "sha256": "0bd362430be4c1532203695c8d592dc482d3d9b1c916a08a2d14b68d4719aa02",
+    "command": "playerrouteposition"
+  }
+}

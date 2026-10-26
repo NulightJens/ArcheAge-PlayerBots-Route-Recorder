@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Player Route Recorder · Start here</title><style>
+:root{color-scheme:dark;--bg:#171716;--panel:#20201e;--raised:#2b2a26;--border:#49463e;--text:#f3efe6;--muted:#bbb8af;--gold:#e3be7d;--serif:Georgia,serif;font-family:Segoe UI,system-ui,sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth;scroll-padding-top:32px;scrollbar-color:var(--border) var(--bg)}
+*{box-sizing:border-box}
+body{margin:0;font-size:1rem;line-height:1.7}
+::selection{background:var(--gold);color:var(--bg)}
+a{color:inherit;text-underline-offset:.3em}
+a:hover{color:var(--gold)}
+button{font:inherit;cursor:pointer}
+a,button,summary{-webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:5px}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{text-wrap:balance}
+p{max-width:70ch;color:var(--muted)}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.8rem,3vw,2.7rem);line-height:1.4;letter-spacing:-.025em}
+h3{font-size:1.125rem;line-height:1.4}
+.wrap{max-width:1216px;margin-inline:auto;padding-inline:48px}
+.site-header{position:absolute;inset:0 0 auto;z-index:5;min-height:88px;padding:16px 4.5%;display:flex;align-items:center;justify-content:space-between;gap:32px;border-bottom:1px solid #ffffff1c;background:rgba(19,20,19,.8)}
+.brand{display:block;font-family:var(--serif);font-weight:600;text-decoration:none;line-height:1.1;color:var(--text);white-space:nowrap}
+.brand-top{display:block;font-size:.8rem;letter-spacing:.12em}
+.brand-name{display:block;font-size:1.5rem;color:var(--gold);margin-top:4px;letter-spacing:.04em}
+.site-header nav{display:flex;align-items:center;gap:36px}
+.site-header nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:.9375rem}
+.site-header .nav-cta{border:1px solid #b19059;padding:8px 22px;color:var(--gold);border-radius:3px;margin-left:16px}
+.nav-cta:hover{background:#e3be7d15}
+.hero{position:relative;display:grid;place-items:center;isolation:isolate;min-height:max(700px,100svh);height:auto;max-height:none;overflow:hidden;background:#30332f}
+.hero-background,.hero-shade{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+.hero-background{object-fit:cover;object-position:center 54%}
+.hero-video[hidden]{display:none}
+.site-header,.hero-content,.discover{transition:opacity 1.2s ease-out,visibility 1.2s}
+.hero-intro-pending .site-header,.hero-intro-pending .hero-content,.hero-intro-pending .discover{opacity:0;visibility:hidden;pointer-events:none}
+.hero-shade{z-index:-1;background:linear-gradient(180deg,rgba(12,16,18,.2) 0%,rgba(14,18,20,.35) 25%,rgba(14,18,20,.54) 53%,rgba(20,22,22,.32) 75%,#171716 100%)}
+.hero-content{text-align:center;padding:max(130px,9rem) 24px max(134px,8rem);width:100%;text-shadow:0 3px 18px rgba(0,0,0,.7)}
+.hero h1{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);line-height:1.15;font-weight:600;letter-spacing:.035em;overflow-wrap:anywhere}
+.hero h1 span{display:block;color:#f4d7a3;font-size:1.4em;letter-spacing:.045em;margin-top:7px}
+.hero-status{display:inline-block;margin:24px auto 0;border:1px solid #d6ae648c;border-radius:3px;background:#171c1bdd;color:#f1cd8c;font-size:.875rem;font-weight:600;padding:6px 20px;letter-spacing:.035em;text-shadow:none}
+.hero .lead{font-size:clamp(1.125rem,1.8vw,1.45rem);margin:24px auto 0;color:#f5f1e9;font-weight:400}
+.hero-description{margin:12px auto 0;max-width:580px;color:#e3dfd6;line-height:1.7;font-size:1rem}
+.actions{display:flex;align-items:center;flex-wrap:wrap;gap:16px 22px;margin-top:30px}
+.hero .actions{justify-content:center;margin-top:32px}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:16px;padding:14px 26px;min-height:54px;border:1px solid transparent;border-radius:3px;font-weight:600;text-decoration:none;text-shadow:none;transition:background .18s ease-out,color .18s ease-out,border-color .18s ease-out}
+.button svg,.text-link svg{width:21px;height:21px;stroke:currentColor;stroke-width:1.6;fill:none;flex-shrink:0}
+.primary{background:#e3be7d;color:#202019;border-color:#eccf9c}
+.primary:hover{background:#f2d5a2;color:#171716}
+.secondary{border-color:#c4c0b3;color:#f3efe6;background:#171c1b8c}
+.secondary:hover{border-color:var(--gold);color:var(--gold);background:#22251f}
+.hero .button{min-width:210px}
+.discover{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;min-height:56px;font-size:.8125rem;letter-spacing:.09em;text-decoration:none;white-space:nowrap;color:#d2caba}
+.discover svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5}
+.welcome{display:grid;grid-template-columns:1fr 1.15fr;gap:100px;padding-block:85px 90px;align-items:start}
+.welcome h2{font-size:clamp(2rem,3.2vw,2.85rem)}
+.welcome-lead{font-size:1.2rem;color:#ede5d5;margin-bottom:18px}
+.welcome p+p{margin-top:16px}
+.hot-section{padding-block:68px 70px;background:var(--panel);border-top:1px solid #32312c;border-bottom:1px solid #32312c}
+.section-heading{margin-bottom:38px;text-align:center}
+.section-heading p{max-width:650px;margin:18px auto 0}
+.request{border-top:1px solid var(--border)}
+.request:last-child{border-bottom:1px solid var(--border)}
+.request summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:130px 1fr 105px 22px;gap:24px;align-items:center;padding:26px 10px}
+.request summary:hover .request-title{color:var(--gold)}
+.request summary::-webkit-details-marker{display:none}
+.request summary:after{content:"";height:9px;width:9px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);justify-self:center;margin-top:-5px}
+.request[open] summary:after{transform:rotate(225deg);margin-top:5px}
+.priority{color:var(--gold);font-family:var(--serif);font-size:.875rem}
+.request-title{font-size:1.1875rem;font-weight:600;line-height:1.4;transition:color .18s ease-out}
+.request-title small{display:block;font-size:.9375rem;font-weight:400;color:var(--muted);margin-top:5px}
+.request-kind{font-size:.875rem;color:var(--muted)}
+.request-body{margin-left:164px;padding:0 44px 32px 0;max-width:860px}
+.request-body p{margin-bottom:20px}
+.request-body dl{margin:0}
+.request-body dl div{display:grid;grid-template-columns:140px 1fr;gap:20px;margin-bottom:16px}
+.request-body dt{font-weight:600;font-size:.9375rem}
+.request-body dd{margin:0;color:var(--muted)}
+.text-link{display:inline-flex;gap:10px;align-items:center;font-weight:600;min-height:44px;text-decoration:none;color:var(--gold)}
+.next-requests{font-size:.9375rem;max-width:760px;margin:30px auto 0;text-align:center}
+.atlas-section{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:center;padding-block:98px}
+.atlas-art{display:block;padding:8px;border:1px solid #88724e;background:#26261f;box-shadow:0 18px 32px #0005;transform:rotate(-2deg);transition:transform .25s ease-out}
+.atlas-art:hover{transform:rotate(0)}
+.atlas-art img{display:block;width:100%;height:auto}
+.atlas-section p{margin-top:20px}
+.atlas-count{color:var(--gold);font-size:.9375rem}
+.atlas-section .button{margin-top:24px;border-color:#8d7959}
+.fine-print{font-size:.875rem;line-height:1.6}
+.contribute-section{padding-block:78px;background:var(--panel);border-top:1px solid #32312c;border-bottom:1px solid #32312c}
+.contribute-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:88px}
+.contribute-grid>div>p{margin-top:20px}
+.contribute-grid strong{color:var(--text)}
+.copy-button{min-height:48px;background:none;border:0;color:var(--gold);text-decoration:underline;text-underline-offset:.3em;padding:10px 0}
+.copy-button:hover{color:#f6d391}
+.contribute-grid .copy-status{min-height:1.4em;margin-top:8px;color:var(--gold);font-size:.875rem}
+.server-note{border-top:1px solid var(--border);margin-top:30px;padding-top:22px}
+.server-note h3{color:var(--gold)}
+.server-note p{margin-top:10px;font-size:.9375rem}
+.steps{list-style:none;counter-reset:steps;margin:5px 0 0;padding:0}
+.steps li{position:relative;counter-increment:steps;padding:0 0 27px 52px;margin-bottom:24px;border-bottom:1px solid var(--border)}
+.steps li:last-child{margin-bottom:0;border-bottom:0;padding-bottom:0}
+.steps li:before{content:counter(steps);position:absolute;left:0;top:-4px;color:var(--gold);font-family:var(--serif);font-size:1.6rem}
+.steps p{margin-top:10px}
+.faq{padding-block:78px 88px;display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+.faq details{border-bottom:1px solid var(--border)}
+.faq summary{padding:20px 0;cursor:pointer;font-weight:600;min-height:44px}
+.faq summary:hover{color:var(--gold)}
+.faq details:first-child summary{padding-top:6px}
+.faq details p{padding-bottom:24px}
+.site-footer{border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;padding-block:36px}
+.footer-brand{font-size:1.15rem}
+.footer-brand span{color:var(--gold)}
+.site-footer p{font-size:.875rem;margin-top:10px}
+.site-footer nav{display:flex;gap:24px;flex-wrap:wrap;align-items:center;font-size:.875rem}
+.site-footer nav a{min-height:44px;display:flex;align-items:center}
+.site-footer .legal{flex-basis:100%;font-size:.8125rem}
+.skip-link{position:absolute;left:20px;top:0;transform:translateY(-110%);padding:12px;background:var(--gold);color:var(--bg);z-index:10}
+.skip-link:focus{top:12px;transform:none}
+.skip-link:hover{color:var(--bg)}
+@media(max-width:1000px){.site-header nav{gap:24px}.site-header .nav-cta{margin-left:0}.wrap{padding-inline:32px}.welcome{gap:48px}.atlas-section{gap:42px}.contribute-grid{gap:44px}.request summary{grid-template-columns:115px 1fr 20px;gap:18px}.request-kind{display:none}.request-body{margin-left:143px;padding-right:10px}.request-body dl div{display:block}.request-body dd{margin-top:6px}.faq{gap:40px}}
+@media(max-width:700px){.site-header{padding:16px 22px;gap:16px;flex-wrap:wrap;min-height:110px}.site-header nav{width:100%;gap:10px 20px;justify-content:space-between;flex-wrap:wrap}.site-header nav a{font-size:.875rem}.site-header nav a:first-child{display:none}.site-header .nav-cta{padding:6px 12px}.brand-top{font-size:.6875rem}.brand-name{font-size:1.1875rem}.hero{min-height:max(740px,100svh);max-height:none}.hero-background{object-position:53% center}.hero-shade{background:linear-gradient(180deg,#12171750 0%,#12171790 30%,#12171795 58%,#17171680 80%,#171716 100%)}.hero-content{padding:max(170px,11rem) 24px max(115px,7rem)}.hero h1{font-size:clamp(2rem,9.8vw,2.45rem);letter-spacing:0}.hero h1 span{font-size:1.2em;letter-spacing:.015em}.hero .lead{font-size:1.1rem;margin-top:24px}.hero-description{font-size:.9375rem;max-width:380px}.hero-description br{display:none}.hero-status{margin-top:22px}.hero .actions{gap:14px;margin-top:26px}.hero .button{min-width:0;padding:13px 20px}.hero .primary{flex-basis:210px}.hero .secondary{flex-basis:210px}.discover{bottom:24px;font-size:.75rem}.wrap{padding-inline:24px}.welcome{grid-template-columns:1fr;gap:24px;padding-block:52px 58px}.welcome h2 br{display:none}.welcome-lead{font-size:1.1rem}.hot-section{padding-block:48px}.section-heading{text-align:left;margin-bottom:26px}.section-heading p{margin-top:14px}.request summary{grid-template-columns:1fr 20px;gap:7px 16px;padding:24px 0}.priority{grid-column:1;font-size:.8125rem}.request-title{grid-column:1;font-size:1.1rem}.request summary:after{grid-column:2;grid-row:1/3}.request-body{margin:0;padding:0 0 28px}.request-title small{font-size:.875rem}.request-body dl div{margin-bottom:18px}.next-requests{text-align:left}.atlas-section{grid-template-columns:1fr;padding-block:62px;gap:34px}.atlas-art{transform:none}.contribute-section{padding-block:52px}.contribute-grid{grid-template-columns:1fr;gap:44px}.faq{grid-template-columns:1fr;gap:24px;padding-block:52px}.faq details:first-child summary{padding-top:16px}.site-footer{padding-block:30px}.site-footer nav{gap:8px 22px}.steps li{padding-left:40px}}
+@media(max-height:760px) and (min-width:701px){.hero{min-height:max(660px,100svh)}.hero-content{padding-top:max(110px,7rem);padding-bottom:max(95px,6rem)}.hero h1{font-size:3.1rem}.hero-status{margin-top:18px}.hero .lead{margin-top:18px}.hero .actions{margin-top:24px}.discover{bottom:18px}}
+@media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}*,*:before,*:after{transition:none!important}.atlas-art{transform:none}}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none}.hero-intro-pending .site-header,.hero-intro-pending .hero-content,.hero-intro-pending .discover{opacity:1;visibility:visible;pointer-events:auto}}
+
+.tools-page .site-header{position:relative;background:#131413;transition:none}
+.site-header nav{gap:clamp(16px,2.3vw,32px);flex-wrap:wrap}
+.site-header nav a[aria-current=page]{color:var(--gold);text-decoration:underline;text-underline-offset:.5em}
+.eyebrow{text-transform:uppercase;font-size:.75rem;letter-spacing:.13em;color:var(--gold);font-weight:600}
+.tools-intro{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;padding-block:70px 64px}
+.tools-intro h1{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);font-weight:600;line-height:1.2;margin-top:12px;color:var(--gold)}
+.tools-lead{font-family:var(--serif);font-size:clamp(1.35rem,2.2vw,1.8rem);line-height:1.5;margin-top:24px;color:var(--text)}
+.tools-intro>div>p:not(.eyebrow){margin-top:18px}.tools-intro .text-link{margin-top:20px}
+.download-panel{background:var(--panel);border:1px solid #83704e;border-top:3px solid var(--gold);border-radius:3px;padding:30px}
+.download-panel h2{font-size:1.6rem;margin-top:10px}.download-panel .release-meta{color:var(--gold);font-size:.875rem;margin-top:8px}
+.download-button{display:flex;width:100%;margin-top:24px;justify-content:space-between}.download-button span{font-size:1.5rem;line-height:1}
+.download-panel .fine-print{margin-top:12px}.download-links{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:14px;font-size:.875rem}.download-links a{min-height:36px;display:inline-flex;align-items:center}
+.download-panel .download-note{border-top:1px solid var(--border);padding-top:18px;margin-top:18px;font-size:.875rem}
+.tools-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:70px;padding-bottom:80px}
+.guide-nav{align-self:start;position:sticky;top:32px;border-top:1px solid var(--border);padding-top:24px}.guide-nav nav{display:flex;flex-direction:column;margin-block:16px 24px}.guide-nav a{padding:8px 0;min-height:44px;text-decoration:none;font-size:.9375rem}.guide-nav>p:last-child{font-size:.875rem}
+.guide-section{border-top:1px solid var(--border);padding:32px 0 48px;scroll-margin-top:24px}.guide-section h2{font-size:clamp(1.55rem,2.5vw,2rem);margin:10px 0 22px}.guide-section p+p{margin-top:16px}.guide-section strong{color:var(--text)}
+.guide-callout{border-left:3px solid var(--gold);background:var(--panel);padding:20px 24px;margin:24px 0}.guide-callout h3{color:var(--gold);font-size:1.0625rem}.guide-callout p{margin-top:10px}
+.guide-steps{counter-reset:guide;list-style:none;margin:0 0 24px;padding:0}.guide-steps li{position:relative;padding-left:46px;margin:24px 0;counter-increment:guide}.guide-steps li:before{content:counter(guide,decimal-leading-zero);position:absolute;left:0;color:var(--gold);font-family:var(--serif);font-size:1.125rem}.guide-steps p{margin-top:8px}
+.guide-tip{font-size:.9375rem;border-left:1px solid var(--border);padding-left:16px}.guide-content code{font-size:.875em;overflow-wrap:anywhere;color:#e8d2aa}.guide-content kbd{font: .8125rem 'Segoe UI',sans-serif;border:1px solid var(--border);border-bottom-width:2px;border-radius:3px;padding:2px 5px;white-space:nowrap}
+.guide-content details{border-bottom:1px solid var(--border);margin:12px 0 20px}.guide-content summary{cursor:pointer;padding:14px 0;color:var(--text);font-weight:600}.guide-content summary:hover{color:var(--gold)}.guide-content details>p{padding-bottom:18px}
+.release-entry{padding:24px 0;border-bottom:1px solid var(--border)}.release-entry header{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}.release-entry h3{color:var(--gold)}.release-entry time{color:var(--muted);font-size:.875rem}.release-entry ul{padding-left:20px;color:var(--muted);margin:14px 0}.release-entry li+li{margin-top:6px}.release-history>.fine-print{margin-top:24px}
+.tools-contribute-link{border-left:3px solid var(--gold);padding:14px 18px;background:#171716;margin-top:24px}.tools-contribute-link a{color:var(--gold);font-weight:600}
+@media(max-width:1000px){.tools-intro{gap:36px}.tools-layout{gap:36px;grid-template-columns:180px minmax(0,1fr)}.download-panel{padding:24px}.tools-page .site-header{gap:20px}.tools-page .site-header nav{gap:12px 20px;justify-content:flex-end}.tools-page .site-header .nav-cta{padding-inline:14px}}
+@media(max-width:760px){.tools-intro{grid-template-columns:1fr;padding-block:42px;gap:32px}.tools-layout{grid-template-columns:1fr;gap:12px;padding-bottom:32px}.guide-nav{position:static;padding-top:20px}.guide-nav nav{flex-direction:row;flex-wrap:wrap;gap:0 20px;margin-block:10px 20px}.guide-nav>p:last-child{display:none}.guide-section{padding-block:28px 36px}.tools-page .site-header nav{justify-content:space-between}.tools-page .site-header nav a:first-child{display:none}.tools-intro h1{font-size:2.6rem}.download-panel{padding:22px}.guide-callout{padding:18px}.guide-steps li{padding-left:36px}}
+@media print{.site-header,.site-footer,.guide-nav,.download-panel{display:none}.tools-layout,.tools-intro{display:block}.wrap{padding:0}.tools-page,.guide-callout{background:#fff;color:#111}p,.eyebrow,.guide-section strong,.guide-content code,.guide-callout h3,.tools-intro h1{color:#111}.guide-section{break-inside:avoid}}
+
+.offline-guide{max-width:920px;padding-block:40px}.offline-guide>h1{font:600 2.4rem/1.25 var(--serif);color:var(--gold);margin:10px 0 24px}.offline-guide>nav{display:flex;gap:12px 24px;flex-wrap:wrap;margin:24px 0}.offline-guide>nav a{min-height:44px;display:flex;align-items:center}</style></head>
+<body class="tools-page"><a class="skip-link" href="#main">Skip to guide</a><header class="site-header"><a class="brand" href="https://aaplayerbots.com/"><span class="brand-top">ArcheAge</span><span class="brand-name">PlayerBots</span></a><a href="https://aaplayerbots.com/data-tools/">Downloads &amp; version history</a></header>
+<main class="wrap guide-content offline-guide" id="main"><p class="eyebrow">Standalone recorder · 1.6.0 preview</p><h1>Your route starts here.</h1><p>Open <strong>PlayerRouteRecorder.exe</strong> from this extracted folder. First visit? Complete the one-time setup. Returning? Jump to Record a walk.</p>
+<nav aria-label="Guide sections"><a href="#install">One-time setup</a><a href="#record">Record a walk</a><a href="#quick-marks">Quick marks</a><a href="#city-network">City networks</a><a href="#photos">Photos</a><a href="#help">Help</a></nav><section class="guide-section" id="before-you-start" aria-labelledby="requirements-title">
+<p class="eyebrow">Before you start</p><h2 id="requirements-title">A working AAEmu setup comes first.</h2>
+<p>You need a working <strong>local AAEmu Game server and an online GM character</strong> with command access level 100. The full PlayerBots mod is not required. <strong>Use AAEmu 1.2 r208022.</strong> Other revisions, including r208088, are experimental and can be tried when Check connection returns a valid position. If problems persist, use a matching r208022 server/client setup.</p>
+<p>The download includes the recorder, its small server extension and this guide. It does not include AAEmu, game files or a database.</p>
+<div class="guide-callout"><h3>Need to set up AAEmu?</h3><p>Start with the <a href="https://github.com/AAEmu/AAEmu">official AAEmu GitHub repository</a> and <a href="https://github.com/AAEmu/AAEmu/wiki">setup wiki</a>. Ask in the <a href="https://discord.gg/vn8E8E6">AAEmu Discord</a> for help choosing a compatible 1.2 setup. The latest development branch and its instructions can target a different version.</p></div>
+<details><summary>Which AAEmu revision should I use?</summary><p>Use AAEmu source <a href="https://github.com/AAEmu/AAEmu/tree/62e3eb1d87da01194802ac886cd500134facad28"><code>62e3eb1</code></a> for 1.2 r208022. Other revisions are experimental. Match your server and client versions, then use Check connection before recording.</p></details>
+</section>
+<section class="guide-section" id="install" aria-labelledby="install-title">
+<p class="eyebrow">One-time setup</p><h2 id="install-title">Connect the recorder to your server.</h2>
+<ol class="guide-steps">
+<li><h3>Extract the entire ZIP</h3><p>Right-click the downloaded ZIP → <strong>Extract All</strong>. Keep all its files together in a normal folder, such as Documents. Open <strong>PlayerRouteRecorder.exe</strong> from that folder.</p></li>
+<li><h3>Choose your Game server</h3><p>Close the Game server using its normal graceful shutdown. In the recorder, open <strong>Server setup → Choose Game EXE…</strong> and select the <strong>AAEmu.Game.exe you normally run</strong>.</p><p class="guide-tip"><strong>AAEmu.Game.exe is the server.</strong> AAEmu.Launcher.exe opens the game client. If you built AAEmu yourself, look under <code>AAEmu.Game\bin\Debug\net10.0\</code> or <code>Release\net10.0\</code>; some builds also have an <code>x64</code> folder. Select the actual output you use to start Game.</p></li>
+<li><h3>Install the extension, then start Game</h3><p>Click <strong>Install extension</strong>. It adds one position-reading script to <code>Scripts\Commands</code>. Start Game normally again, then log into your GM character. AAEmu loads the extension during startup; an already built server needs no rebuild or database migration.</p></li>
+</ol>
+<div class="guide-callout"><h3>Already used the standalone recorder?</h3><p>Extract the new download and click <strong>Check connection</strong>. If it works, you are ready. Reinstall the extension only if it is missing or you now run Game from a different output folder. Your quick mark buttons stay saved on this Windows account.</p></div>
+</section>
+<section class="guide-section" id="record" aria-labelledby="record-title">
+<p class="eyebrow">Everyday use</p><h2 id="record-title">Connect. Name the walk. Record.</h2>
+<ol class="guide-steps">
+<li><h3>Check connection</h3><p>Log into the game, open the recorder, enter your exact GM character name and your <strong>Client build</strong> (for example ArcheAge 1.2 r208088), then click <strong>Check connection</strong>. The build is your declaration, not an automatic detection.</p></li>
+<li><h3>Enter From / to</h3><p>Use landmarks, for example <strong>Village gate → East bridge</strong>. The walk name fills itself in. Enable <strong>Take game photos while recording</strong> if you want photos too.</p></li>
+<li><h3>Start recording and walk</h3><p>Return to the game and travel normally. Finish with <strong>Stop &amp; export</strong>, then click <strong>Show export</strong>. Try a two-minute walk before a long trip.</p></li>
+</ol>
+<p><strong>Route settings</strong> keeps road type, direction and frequency. The default is one point every 2 seconds. Press <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>R</kbd> to pause or resume. Keep separate routes for walking, swimming and transport; only mark a road bidirectional after checking both directions.</p>
+</section>
+<section class="guide-section" id="quick-marks" aria-labelledby="marks-title">
+<p class="eyebrow">Mark what you find</p><h2 id="marks-title">A useful note in one click.</h2>
+<p>While recording, scroll below the note field to <strong>4. Quick mark options</strong>. Click <strong>Quest</strong>, <strong>Fork</strong>, <strong>Merchant</strong> or <strong>Mail</strong> to save that label at your current location.</p>
+<p>To make your own button, enter a word or short phrase in <strong>New button</strong> and click <strong>Add quick mark</strong>, or press Enter. Use the small <strong>x</strong> beside a button to remove it. You can keep 24 labels of up to 40 characters each; your choices survive closing the tool and extracting a newer version.</p>
+<p>Quick marks preserve any longer note you are typing in section 3. Marking is disabled while paused. If the connection fails, the recorder tells you to retry; it does not save a made-up location.</p>
+</section>
+<section class="guide-section" id="city-network" aria-labelledby="city-title">
+<p class="eyebrow">Explore a town</p><h2 id="city-title">Connect streets at named junctions.</h2>
+<ol class="guide-steps"><li><h3>Choose City / area network</h3><p>Enter the area name in <strong>Area name</strong>. From / to is unnecessary. Start recording.</p></li><li><h3>Mark each junction</h3><p>In <strong>City junctions</strong>, name the place and click <strong>Mark junction</strong>. Walk to the next place and mark it too.</p></li><li><h3>Return and explore another branch</h3><p>At the same junction, choose its existing name and mark it again. Use a different name for a different floor. The tool joins explicit matching junctions within 1.5 metres horizontally and 0.75 metres vertically; it never guesses connections from map crossings.</p></li><li><h3>Stop &amp; export</h3><p>The ZIP includes <code>route.json</code>, <code>network.json</code> and navigation-prior files for the extractor. Loops stay intact. Only walked directions become edges. Pause before any unrecorded move.</p></li></ol>
+<p>Example: Gate → Market → Merchant → Market → Mail → Market → Gate. Keep Quest, Merchant, Mail and obstacle notes in Quick marks. See <a href="docs/CITY-NETWORKS.md">the network data guide</a> for fieldwork and export details. Use these recordings with Navigation Extractor; PlayerBots cannot load them directly as navigation maps.</p></section>
+<section class="guide-section" id="photos" aria-labelledby="photos-title">
+<p class="eyebrow">Optional photos</p><h2 id="photos-title">Collect a view along the route.</h2>
+<p>Tick <strong>Take game photos while recording</strong>. Photos use their own interval, every 5 seconds by default. A single open ArcheAge window is selected automatically; choose your window in <strong>Photo settings</strong> if several are open.</p>
+<div class="guide-callout"><h3>F9 does nothing in your client?</h3><p>Open <strong>Photo settings → Photo source → Visible window capture</strong>. Use windowed or borderless mode and keep the game fully visible on one monitor. This option takes a picture of the visible game area without relying on the game screenshot key or its save folder. Keep other windows out of the game area.</p></div>
+<details><summary>Use the game’s own screenshots instead</summary><p>The default photo source presses <strong>F9</strong> and collects new files from <code>Documents\ArcheAge\ScreenShots</code>. First take a screenshot manually and confirm a new file appears. If your key or folder differs, change it in <strong>Photo settings</strong>. Original files stay in the game folder. If the client cannot save a screenshot manually, choose visible window capture.</p></details>
+<p>Keep the game in front while recording; switching away or pausing skips photos. At a landmark, stand still, turn the camera and press <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd> for an extra view. These are separate photos along your walk, not a stitched 360° panorama. Photo positions are approximate.</p>
+<p>Use <strong>View photos</strong> to review the result. Photo settings also controls image width and storage limits. Keep space for screenshots, collected copies and exports.</p>
+</section>
+<section class="guide-section" id="share" aria-labelledby="share-title">
+<p class="eyebrow">Contribute on your own time</p><h2 id="share-title">Make the next route easier to follow.</h2>
+<p>Short town exits, forks, bridges and road connections are good first trips. Mark quest interactions, merchants, mailboxes, obstacles and places where a crossing fails. Include the zone, nearby landmarks and what you observed. Failed attempts and normal detours are useful too.</p>
+<p>Click <strong>Show export</strong>. Keep the route ZIP and, if you took photos, the separate <code>-street-view.zip</code>, along with their <code>.sha256</code> files. Exports go to <code>Documents\ArcheAge Routes\exports</code> by default. To browse photos offline, extract the entire Street View ZIP and open its <code>index.html</code>.</p>
+<p>Review pictures and notes for names, chat or anything private before sharing. Contact <strong>Over1ander</strong> in the <a href="https://discord.gg/vn8E8E6">AAEmu Discord</a> to arrange sending your recordings. The recorder saves exports locally; share them when you are ready.</p>
+</section>
+<section class="guide-section" id="help" aria-labelledby="help-title">
+<p class="eyebrow">If something gets stuck</p><h2 id="help-title">A few quick checks.</h2>
+<details><summary>I cannot find AAEmu.Game.exe</summary><p>It belongs to the built AAEmu server, not the client launcher. If you only have AAEmu.Launcher.exe, follow the <a href="https://github.com/AAEmu/AAEmu/wiki">AAEmu setup wiki</a> or ask the <a href="https://discord.gg/vn8E8E6">AAEmu community</a> for help setting up a compatible 1.2 server. The recorder requires that local server to read positions.</p></details>
+<details><summary>Check connection fails or no sample appears</summary><p><strong>Read the specific message beside your character.</strong> No commands loaded means a Game script compilation problem; insufficient privileges means GM access; character not found means the name is wrong or offline. If AAEmu answers but the command returns nothing, try the command below and check the Game log. A newer client build alone does not identify the cause. You can correct the loopback API address in Server setup.</p><p>Confirm Game restarted after installation and the named GM character is online. In game, <code>/playerrouteposition sample</code> should return <code>PLAYER_ROUTE_SAMPLE_V1</code>. Unknown command means the extension did not load; insufficient privileges means the character lacks the required command access.</p><p>The Game server’s active <code>Config.json</code> should have <code>WebApiNetwork</code> host <code>127.0.0.1</code> and port <code>1280</code>. Keep this administrator API on loopback. The installer does not edit settings; restart Game normally after a configuration change.</p></details>
+<details><summary>The installer reports a conflicting extension</summary><p>Keep the existing file intact and ask the server owner to compare versions. Do not install a second copy of the same command under a different name. A matching standalone copy is reused automatically.</p></details>
+<details><summary>The recorder will not open, or the route will not export</summary><p>Run the EXE from the fully extracted folder. Startup diagnostics are under <code>%LOCALAPPDATA%\ArcheAge Route Recorder\logs</code>. For an empty export, walk farther and check the sample count and bottom log. Stationary-only recordings may have no traversable segment; raw files remain under <code>working-recordings</code>.</p></details>
+</section>
+
+<p><a href="docs/STREET-VIEW.md">Detailed photo guide</a> · <a href="docs/HELPER-FIELDWORK.md">Fieldwork assignments</a> · <a href="FIELD-NOTES.txt">Fill-in field notes</a></p>
+<p>New versions are listed on <a href="https://aaplayerbots.com/data-tools/#history">the website</a>. The recorder does not check for updates automatically. This guide works offline; community and setup links need an internet connection.</p></main></body></html>

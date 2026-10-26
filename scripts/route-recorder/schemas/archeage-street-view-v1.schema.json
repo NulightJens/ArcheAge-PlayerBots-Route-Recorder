@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArcheAge Street View v1",
+  "type": "object",
+  "required": ["schema", "schemaVersion", "recordingId", "metadata", "capture", "frames", "trace", "content", "rawRecordingSha256"],
+  "properties": {
+    "schema": {"const": "archeage-street-view-v1"},
+    "schemaVersion": {"const": 1},
+    "recordingId": {"type": "string", "format": "uuid"},
+    "metadata": {"type": "object"},
+    "capture": {"type": "object", "required": ["recordingId", "intervalSeconds", "projection", "cameraOrientation"], "properties": {
+      "recordingId": {"type": "string", "format": "uuid"},
+      "intervalSeconds": {"type": "integer", "minimum": 1, "maximum": 60},
+      "projection": {"const": "perspective"}, "cameraOrientation": {"const": "unknown"}
+    }},
+    "frames": {"type": "array", "minItems": 1, "maxItems": 20000, "items": {
+      "type": "object",
+      "required": ["index", "path", "capturedUtc", "positionCapturedUtc", "positionOffsetMs", "segment", "worldId", "instanceId", "zoneId", "x", "y", "z", "playerHeadingRadians", "cameraHeadingRadians", "projection", "width", "height", "sha256", "bytes"],
+      "properties": {
+        "index": {"type": "integer", "minimum": 1},
+        "path": {"type": "string", "pattern": "^images/[0-9]{6}\\.jpg$"},
+        "capturedUtc": {"type": "string", "format": "date-time"},
+        "positionCapturedUtc": {"type": "string", "format": "date-time"},
+        "positionOffsetMs": {"type": "number", "minimum": -250, "maximum": 2000},
+        "captureTimestampBasis": {"enum": ["visible-pixels-copied", "screenshot-key-request"]},
+        "sourceFileObservedUtc": {"type": "string", "format": "date-time"},
+        "sourceFileSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "sourceBytes": {"type": "integer", "minimum": 1},
+        "segment": {"type": "integer", "minimum": 0},
+        "worldId": {"type": "integer", "minimum": 0},
+        "instanceId": {"type": "integer", "minimum": 0},
+        "zoneId": {"type": "integer", "minimum": 0},
+        "x": {"type": "number", "minimum": -10000000, "maximum": 10000000},
+        "y": {"type": "number", "minimum": -10000000, "maximum": 10000000},
+        "z": {"type": "number", "minimum": -10000000, "maximum": 10000000},
+        "playerHeadingRadians": {"type": ["number", "null"]},
+        "cameraHeadingRadians": {"type": "null"}, "projection": {"const": "perspective"},
+        "width": {"type": "integer", "minimum": 1, "maximum": 2560},
+        "height": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "bytes": {"type": "integer", "minimum": 4}
+      }
+    }},
+    "trace": {"type": "array", "items": {"type": "object", "required": ["x", "y", "z", "worldId", "instanceId", "zoneId", "segment", "capturedUtc"]}},
+    "content": {"type": "object", "required": ["containsScreenshots", "mayContainNamesChatOrOverlays", "cameraOrientationKnown", "panorama"], "properties": {
+      "containsScreenshots": {"const": true}, "mayContainNamesChatOrOverlays": {"const": true}, "cameraOrientationKnown": {"const": false}, "panorama": {"const": false}
+    }},
+    "rawRecordingSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

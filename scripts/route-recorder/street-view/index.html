@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'">
+<title>Field Journal · Street View</title><link rel="stylesheet" href="viewer.css">
+<script src="data.js" defer></script><script src="viewer.js" defer></script></head>
+<body>
+<header><div><p class="eyebrow">FIELD JOURNAL / STREET VIEW</p><h1 id="title">Loading walk…</h1><p id="endpoints"></p></div><span class="seal">OFFLINE ATLAS</span></header>
+<main>
+<section class="scene" aria-label="Recorded view">
+<div class="image-stage"><img id="photo" alt="Recorded game view"><p id="imageError" hidden>Image is missing or unreadable. Extract the entire Street View ZIP, including images.</p><span id="frameBadge"></span></div>
+<div class="navigation"><button id="previous" aria-label="Previous image">← Back</button><button id="play">Play walk</button><button id="next" aria-label="Next image">Forward →</button><span id="counter"></span></div>
+<label class="scrubber">Move along this walk<input id="timeline" type="range" min="0" value="0" aria-label="Walk position"></label>
+<div class="caption"><span id="time"></span><span id="position"></span></div>
+<p class="hint">Use ← / → to step between photos. Views show the camera as it was recorded; they are not 360° panoramas.</p>
+</section>
+<aside>
+<div class="map-heading"><h2>Walk trace</h2><span>LOCAL X / Y</span></div>
+<svg id="map" viewBox="0 0 1000 1000" role="img" aria-label="Recorded positions. Click near a photo marker to jump to that view."></svg>
+<p class="hint">Gold marks photos. Click the trace to choose a nearby image. Gaps remain between interrupted routes.</p>
+<dl><dt>Location</dt><dd id="context"></dd><dt>Position / photo offset</dt><dd id="offset"></dd><dt>Nearby views</dt><dd id="nearby"></dd><dt>Notes</dt><dd id="notes"></dd></dl>
+<p id="captureInfo" class="hint"></p>
+<p class="notice">Review images before sharing. Names, chat and game overlays may be visible. This viewer makes no network requests.</p>
+</aside>
+</main><footer>Observed travel · perspective photographs · camera bearing unknown</footer>
+</body></html>
