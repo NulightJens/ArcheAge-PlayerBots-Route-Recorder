@@ -13,7 +13,7 @@ $output = [IO.Path]::GetFullPath($OutputDirectory)
 $staging = Join-Path $output ('build-' + [guid]::NewGuid().ToString('N'))
 [IO.Directory]::CreateDirectory($staging) | Out-Null
 $sourceZip = Join-Path $staging 'source.zip'
-& git -C $root archive --format=zip "--output=$sourceZip" $commit -- README.md FAMILY.md CHANGELOG.md LICENSE.md START-HERE.html FIELD-NOTES.txt recorder.json docs server scripts/route-recorder LICENSE.GPL LICENSE.MIT
+& git -C $root archive --format=zip "--output=$sourceZip" $commit -- LICENSE.md recorder.json server scripts/route-recorder LICENSE.GPL LICENSE.MIT
 if ($LASTEXITCODE -ne 0) { throw 'Could not archive the requested standalone source.' }
 $sourceRoot = Join-Path $staging 'source'
 [IO.Compression.ZipFile]::ExtractToDirectory($sourceZip, $sourceRoot)
@@ -31,7 +31,7 @@ foreach ($path in @($archive, $manifestPath, $checksumPath)) {
 }
 $package = Join-Path $staging 'package/archeage-route-recorder'
 [IO.Directory]::CreateDirectory($package) | Out-Null
-foreach ($entry in @('START-HERE.html', 'README.md', 'FAMILY.md', 'CHANGELOG.md', 'LICENSE.md', 'recorder.json', 'FIELD-NOTES.txt', 'docs', 'server')) {
+foreach ($entry in @('LICENSE.md', 'recorder.json', 'server')) {
     Copy-Item -LiteralPath (Join-Path $standalone $entry) -Destination $package -Recurse
 }
 foreach ($license in @('LICENSE.GPL', 'LICENSE.MIT')) {
@@ -78,7 +78,7 @@ try {
 $zip = [IO.Compression.ZipFile]::OpenRead($archive)
 try {
     $entries = @($zip.Entries | ForEach-Object FullName)
-    foreach ($required in @('PlayerRouteRecorder.exe', 'START-HERE.html', 'server/PlayerRoutePositionCommand.cs',
+    foreach ($required in @('PlayerRouteRecorder.exe', 'server/PlayerRoutePositionCommand.cs',
         'scripts/route-recorder/PlayerRouteNetwork.ps1', 'scripts/route-recorder/RecorderBridge.psm1', 'scripts/route-recorder/NativeScreenshot.psm1', 'scripts/route-recorder/QuickMarks.psm1', 'scripts/route-recorder/windows/GameWindowCapture.cs',
         'scripts/route-recorder/street-view/index.html', 'scripts/route-recorder/street-view/viewer.js', 'package-identity.json')) {
         if ('archeage-route-recorder/' + $required -notin $entries) { throw "Missing packaged file: $required" }
